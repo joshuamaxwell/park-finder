@@ -1,28 +1,140 @@
+@import 'compass';
+
+$background-white: #FEFEFE;
+$text-color-dark: #333333;
+$text-color-light: #FDFDFD;
+$dark-red: #B2534E;
+$light-red: #CC554F;
+$yellow: #F7FF7C;
+$light-green: #D5FFCB;
+$green: #78B868;
+
+
+$playground-photo-width: 500px;
+
 body {
-    background: #fafafa;
-    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-    color: #333;
+    background: $background-white;
+    font-family: 'Rosario', sans-serif;
+    color: $text-color-dark;
+    position: relative;
+    margin: 0;
+    padding: 0;
+    @include transition(all 1s ease-in); // not working for color
 }
 
-.hero-unit {
-    margin: 50px auto 0 auto;
-    width: 300px;
-    font-size: 18px;
-    font-weight: 200;
-    line-height: 30px;
-    background-color: #eee;
-    border-radius: 6px;
-    padding: 60px;
-    h1 {
-        font-size: 60px;
-        line-height: 1;
-        letter-spacing: -1px;
+.header {
+    background-color: $dark-red;
+    color: $text-color-light;
+    font-size: 27px;
+    margin: 0;
+    width: 100%;
+    position: fixed;
+    top: 0;
+    z-index: 200;
+    .logo {
+        padding: 0;
+        margin: 5px;
+    }
+        
+}
+
+.main {
+    margin-top: 80px;
+}
+
+.container {
+    width: 960px;
+    margin: 0 auto;
+}
+
+.add-new {
+    background: $light-red;
+    color: $text-color-light;
+    text-align: center;
+    height: 200px;
+    line-height: 200px;
+    // @include border-radius(50% 5px 50% 5px);
+    // @include box-shadow(5px 5px $dark-red);
+    margin: 20px 0 40px;
+    .btn {
+        vertical-align: middle;
+        color: $text-color-dark;
+        display: inline-block;
+        font-size: 24px;
+        background: $yellow;
+        @include border-radius(50%);
+        border: none;
+        width: 100px;
+        height: 100px;
+        &:hover {
+            background: scale-lightness($yellow, 50%);
+            cursor: pointer;
+        }
+    }
+    .add-new-text {
+        display: inline-block;
+        margin: 0 20px;
     }
 }
 
-.browsehappy {
-    margin: 0.2em 0;
-    background: #ccc;
-    color: #000;
-    padding: 0.2em 0;
+.playground-card {
+    border-bottom: 1px groove $text-color-dark;
+    margin-bottom: 40px;
+    &:last-child {
+        border-bottom: none;
+    }
+    .playground-name{
+        position: absolute;
+        font-family: 'Lato', sans-serif;
+        background: rgba(25, 25, 25, 0.5);
+        width: 100%;
+        color: $text-color-light;
+        margin: 0;
+        padding: 10px;
+    }
+    .playground-photo {
+        width: $playground-photo-width;
+        height: 400px;
+        display: inline-block;
+        @include border-radius (5px);
+        margin: 10px 20px 10px 0;
+        overflow: hidden;
+        position: relative;
+        img {
+            width: $playground-photo-width;
+        }
+    }
+    .playground-data{
+        width: 960px - 24px - $playground-photo-width;
+        display: inline-block;
+        margin: 0px;
+        padding: 0px;
+        vertical-align: top;
+        .playground-location {
+            width: 100%;
+            .city {
+                letter-spacing: 8px;
+                font-size: 24px;
+                text-align: center;
+            }
+            .address {
+                text-align: center;
+            }
+        }      
+        .playground-description {
+            display: inline-block;
+        }  
+        .ratings {
+            text-align: right;
+            margin: 5px;
+            .like {
+                display: inline-block;
+                margin: 0 20px;
+            }
+            .dislike {
+                display: inline-block;
+                margin: 0 20px;
+            }
+        }
+    }
 }
